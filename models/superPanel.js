@@ -4,27 +4,13 @@ var validateEmail = function (email) {
   var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   return re.test(email);
 };
-const cPanelSchema = mongoose.Schema({
-  email: {
-    type: String,
-    trim: true,
-    lowercase: true,
-    unique: true,
-    validate: [isEmail, "invalid email"],
-    isAsync: false,
-    required: [true, "Email required"],
-  },
+const superPanelSchema = mongoose.Schema({
   userAgent: {
     type: String,
     trim: true,
     required: true,
   },
-  uid: {
-    type: Number,
-    trim: true,
-    unique: true,
-    required: true,
-  },
+
   password: {
     type: String,
     unique: true,
@@ -38,10 +24,7 @@ const cPanelSchema = mongoose.Schema({
     required: true,
   },
   loginAttempt: [Number],
-  accStatus: {
-    type: Number,
-    default: 0,
-  },
+
   isLoggedIn: Boolean,
   loggedIp: [
     {
@@ -55,6 +38,6 @@ const cPanelSchema = mongoose.Schema({
   },
 });
 
-const CPanel = mongoose.model("cpanel", cPanelSchema);
+const superPanel = mongoose.model("superpanel", supePanelSchema);
 
-export default CPanel;
+export default superPanel;
