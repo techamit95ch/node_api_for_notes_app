@@ -1,4 +1,14 @@
 import CPanel from "../models/CPanel.js";
+export const getUid = async (req, res) => {
+  const { email } = req.body;
+  console.log({ "Create Post Data": post });
+  try {
+    const uid = await CPanel.find();
+    res.status(200).json(postMessages);
+  } catch (e) {
+    res.status(404).json({ message: e.message });
+  }
+};
 export const getPosts = async (req, res) => {
   const post = req.body;
   console.log({ "Create Post Data": post });
